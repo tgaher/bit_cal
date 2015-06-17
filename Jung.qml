@@ -1,15 +1,21 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
+//import "content"
 
 
 
-Rectangle {
+Rectangle
+{
+    id: g
     width: 270
     height: 200
     color: "gray"
   //title: "Bit Calculator"
 
-    MouseArea {
+
+
+    MouseArea
+    {
         anchors.fill: parent
         onClicked:
         {
@@ -17,6 +23,12 @@ Rectangle {
            // Qt.quit();
         }
     }
+
+    Item
+    {
+        property int num: 0
+
+
     Button
     {
         id: one
@@ -24,10 +36,15 @@ Rectangle {
         y: 125
         width: 22
         height:  22
-        
-        text: '0'
-        onClicked: one.text= '1'
-       // fontx.pointSize: 250
+        property int a: 0
+        text: a
+
+        onClicked:
+        {
+            a= 1
+            one.text= '1'
+        }
+
     }
     Button
     {
@@ -36,10 +53,14 @@ Rectangle {
         y: 125
         width: 22
         height:  22
+         property int b: 0
+        text: b
 
-        text: '0'
-        onClicked: two.text= '1'
-       // fontx.pointSize: 250
+        onClicked:
+        {
+            b= 1
+            two.text= '1'
+        }
     }
     Button
     {
@@ -48,9 +69,14 @@ Rectangle {
         y: 125
         width: 22
         height:  22
+        property int c: 0
+        text: c
 
-        text: '0'
-        onClicked: three.text= '1'
+        onClicked:
+        {
+            c= 1
+            three.text= c
+        }
       }
 
      Button
@@ -60,12 +86,30 @@ Rectangle {
             y: 125
             width: 22
             height:  22
+            property int d: 0
+            text: d
 
-            text: '0'
-            onClicked: four.text= '1'
-
-            // fontx.pointSize: 250
+            onClicked:
+            {
+                d= 1
+                four.text= d
+            }
         }
 
+    }
+    Rectangle
+    {
+        property int sum;
+        sum : (8*four.d)+(4*three.c)+(2*two.b)+ one.a
+        width: 270
+        height: 60
+        anchors.topMargin: parent
+        Text
+        {
+            anchors.centerIn: parent
+            text: sum
+        }
+
+    }
 
 }
