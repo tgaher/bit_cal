@@ -97,19 +97,26 @@ Rectangle
         }
 
     }
+
     Rectangle
     {
-        property int sum;
-        sum : (8*four.d)+(4*three.c)+(2*two.b)+ one.a
+        property int sum: calculateSum()
+        id: resultText
+
         width: 270
         height: 60
         anchors.topMargin: parent
         Text
         {
             anchors.centerIn: parent
-            text: sum
+            text: parent.sum
         }
 
+    }
+
+    function calculateSum()
+    {
+       return (8*four.d)+(4*three.c)+(2*two.b)+ one.a;
     }
 
 }
