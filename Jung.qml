@@ -13,7 +13,6 @@ Rectangle
   //title: "Bit Calculator"
 
 
-
     MouseArea
     {
         anchors.fill: parent
@@ -22,6 +21,11 @@ Rectangle
             parent.color = 'red';
            // Qt.quit();
         }
+    }
+
+    Repeater
+    {
+
     }
 
     Item
@@ -117,6 +121,19 @@ Rectangle
     function calculateSum()
     {
        return (8*four.d)+(4*three.c)+(2*two.b)+ one.a;
+    }
+
+    function populateButtons()
+    {
+        var btns = ['1', '2', '3', '...', '+', '-'];
+        btnRep.model = btns.length;
+
+        for(var i = 0; i < btns.length; i++)
+        {
+            btnRep.children[i].text = btns[i];
+            btnRep.action = function() {  };
+        }
+
     }
 
 }
